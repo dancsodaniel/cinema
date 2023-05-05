@@ -1,0 +1,32 @@
+.image-container {
+    display: flex;
+    justify-content: center;
+
+    .img-thumbnail {
+        max-width: 300px;
+    }
+}
+
+.story-container {
+    background-color: #ffffffc8;
+    margin: 30px 10px 10px;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 90%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .col-md-3 {
+      display: none;
+    }
+  
+    .col-sm-12 {
+      margin-top: 20px;
+    }
+  }

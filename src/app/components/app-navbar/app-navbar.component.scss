@@ -1,0 +1,51 @@
+mat-toolbar {
+  margin-bottom: 1rem;
+
+  .title {
+    margin-right: 30px;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    .menu-icon {
+      display: inline;
+      position: absolute;
+      right: 0;
+      top: 15px;
+
+      @media (min-width: 875px) {
+        display: none;
+      }
+    }
+
+    .desktop-buttons {
+      display: none;
+
+      @media (min-width: 875px) {
+        display: block;
+      }
+    }
+
+    .right-elements {
+      position: absolute;
+      right: 10px;
+      top: 15px;
+    }
+
+    button {
+      color: white;
+      margin-left: 1rem;
+      background-color: transparent;
+      border: none;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

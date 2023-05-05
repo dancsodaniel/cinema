@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "cinema-app-48ba4": {
+      "hosting": {
+        "cinema-app": [
+          "cinema-app-48ba4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "cinema-app-48ba4"
+  }
+}

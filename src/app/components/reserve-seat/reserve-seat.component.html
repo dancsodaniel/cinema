@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="form-container">
+        <h2>Reserve Seats for {{ movie?.Title }}</h2>
+    
+        <form [formGroup]="reserveForm">
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>Cinema:</mat-label>
+              <mat-select formControlName="cinema" (selectionChange)="onSelectCinema()">
+                <mat-option disabled selected>Select a cinema</mat-option>
+                <mat-option *ngFor="let cinema of cinemas" [value]="cinema">{{ cinema.name }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="reserveForm.controls['cinema'].hasError('required')">
+                Please select a cinema
+              </mat-error>
+            </mat-form-field>
+          </div>
+      
+          <div *ngIf="selectedCinema">
+            <div class="form-group">
+                <mat-form-field>
+                  <mat-label>Times:</mat-label>
+                  <mat-select formControlName="times">
+                    <mat-option disabled selected>Select a showtime</mat-option>
+                    <mat-option *ngFor="let time of times" [value]="time">{{ time }}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="reserveForm.controls['seats'].hasError('required')">
+                    Please select a showtime
+                  </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field>
+                <mat-label>Seats:</mat-label>
+                <mat-select formControlName="seats">
+                  <mat-option disabled selected>Select a seat</mat-option>
+                  <mat-option *ngFor="let seat of seats" [value]="seat">{{'in row ' +  seat.row + ' seat ' + seat.column }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="reserveForm.controls['seats'].hasError('required')">
+                  Please select a seat
+                </mat-error>
+              </mat-form-field>
+            </div>
+        
+            <div class="form-group">
+              <mat-form-field>
+                <mat-label>Name:</mat-label>
+                <input matInput formControlName="name" type="text" required>
+                <mat-error *ngIf="reserveForm.controls['name'].hasError('required')">
+                  Please enter your name
+                </mat-error>
+              </mat-form-field>
+            </div>
+        
+            <div class="form-group">
+              <mat-form-field>
+                <mat-label>Email:</mat-label>
+                <input matInput formControlName="email" type="email" required>
+                <mat-error *ngIf="reserveForm.controls['email'].hasError('required')">
+                  Please enter your email
+                </mat-error>
+                <mat-error *ngIf="reserveForm.controls['email'].hasError('email')">
+                  Please enter a valid email address
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!reserveForm.valid" (click)="onSubmit()">Submit</button>
+          </div>
+        </form>
+    </div>
+</div>

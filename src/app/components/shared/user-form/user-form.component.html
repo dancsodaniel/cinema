@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row mt-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+          <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <h4 class="text-dark text-muted">{{ title }}</h4>
+              </div>
+              <div class="mb-3" *ngIf="title != 'Change Password'">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" formControlName="email" [attr.required]="true">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                  <div *ngIf="email.errors?.['required']">Email is required.</div>
+                  <div *ngIf="email.errors?.['email']">Please enter a valid email address.</div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" formControlName="password" [attr.required]="true">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                  <div *ngIf="password.errors?.['required']">Password is required.</div>
+                </div>
+              </div>
+              <div class="mb-3" *ngIf="title == 'Change Password'">
+                <label for="confirm-password" class="form-label">New Password</label>
+                <input type="password" class="form-control" name="new-password" formControlName="newPassword" [attr.required]="true">
+              </div>
+              <div class="user-form-footer">
+                <button type="submit" class="btn btn-info" [disabled]="form.invalid">Submit</button>
+                <a [routerLink]="redirectLink" class="btn btn-secondary">{{ secondaryButtonText }}</a>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+  

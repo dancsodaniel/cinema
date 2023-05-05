@@ -1,0 +1,14 @@
+<div class="movie" [ngClass]="{'popular':isMoviePopular(movie)}">
+    <div>
+        <p>{{ movie.Year }}</p>
+    </div>
+    <div class="movie-image-container">
+        <img src="{{ movie.Image }}" [alt]="movie.Title">
+    </div>
+    <div>
+        <span>{{ movie.Genre }}</span>
+        <h3>{{ movie.Title }}</h3>
+        <button class="btn btn-danger" *ngIf="isInWatchlist" (click)="remove.emit(movie)">Remove from Watchlist</button>
+        <button class="btn btn-primary" *ngIf="!isInWatchlist" routerLink="/movie/{{ movie.id }}">Movie details</button>
+    </div>
+</div>

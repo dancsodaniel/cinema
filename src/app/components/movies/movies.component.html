@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="text-center">Search For Movie</h1>
+        <div class="search">
+            <input #search type="text" placeholder="Search for Movie" class="form-control">
+            <mat-form-field>
+                <mat-label>Genre</mat-label>
+                <mat-select #genreSelect [(ngModel)]="selectedGenre" (selectionChange)="onGenreChange(genreSelect.value)">
+                  <mat-option *ngFor="let genre of genres" [value]="genre.value">
+                    {{ genre.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            <button class="btn btn-primary" (click)="onSearchClick(search.value)">Go</button>
+            <button class="btn btn-danger" *ngIf="searchValue != '' || selectedGenre != ''" (click)="resetSearch()">Cancel</button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <app-card-movie *ngFor="let movie of movies" [movie] = "movie" [isInWatchlist]="false"></app-card-movie>
+</div>

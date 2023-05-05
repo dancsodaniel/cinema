@@ -1,0 +1,11 @@
+<div class="container">
+    <ng-container *ngIf="movies$ | async as movies">
+        <ng-container *ngIf="movies.length > 0; else emptyWatchlist">
+            <app-card-movie *ngFor="let movie of movies" [movie]="movie" [isInWatchlist]="true" (remove)="removeFromWatchlist($event)">
+            </app-card-movie>
+        </ng-container>
+        <ng-template #emptyWatchlist>
+            <h1>Your watchlist is empty</h1>
+        </ng-template>
+    </ng-container>
+</div>

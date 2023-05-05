@@ -1,0 +1,11 @@
+<div class="container">
+    <ng-container *ngIf="cinemas$ | async as cinemas">
+      <ng-container *ngIf="cinemas.length > 0; else emptyCinemas">
+        <app-cinema-card *ngFor="let cinema of cinemas | orderCinemasByDisplayOrder" [cinema]="cinema"></app-cinema-card>
+      </ng-container>
+      <ng-template #emptyCinemas>
+        <h1>No cinemas found</h1>
+      </ng-template>
+    </ng-container>
+  </div>
+  

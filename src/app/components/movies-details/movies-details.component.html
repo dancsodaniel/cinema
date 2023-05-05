@@ -1,0 +1,27 @@
+<div class="container">
+    <div *ngIf="movie">
+        <div class="row">
+            <div class="col-md-5 image-container">
+                <img [src]="movie.Image" class="img-thumbnail" [alt]="movie.Title">
+            </div>
+            <div class="col-md-7">
+                <h2 class="text-center text-primary">{{ movie.Title }}</h2>
+                <mat-list class="list-group">
+                    <mat-list-item class="list-group-item"><strong>Genre: &nbsp; {{ movie.Genre }}</strong></mat-list-item>
+                    <mat-list-item class="list-group-item"><strong>Relase date: &nbsp; {{ movie.Year }}</strong></mat-list-item>
+                    <mat-list-item class="list-group-item"><strong>Rate: &nbsp; {{ movie.Rate }}</strong></mat-list-item>
+                </mat-list>
+                <div class="button-container">
+                    <button class="btn btn-info" (click)="onReserve()">Reserve seat</button>
+                    <button *ngIf="!(isInWatchlist$ | async)" class="btn btn-success" (click)="handleWatchlist()">Add to watchlist</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="story-container">
+                <h3>Story</h3>
+                {{ movie.Story }}
+            </div>
+        </div>
+    </div>
+</div>

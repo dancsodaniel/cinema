@@ -1,0 +1,10 @@
+<div class="card-container">
+    <div class="card" *ngFor="let ticket of tickets">
+      <div class="card-body">
+        <h5 class="card-title">{{ ticket.movie }}</h5>
+        <p class="card-text">{{ ticket.seat }}</p>
+        <p class="card-text">{{ ticket.time }}</p>
+      </div>
+    </div>
+  </div>
+  

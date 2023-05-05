@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+    <span>CinemaApp</span>
+    <span class="spacer"></span>
+    <div class="button-group">
+        <button mat-icon-button class="menu-icon" (click)="toggleNavbar()" [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/movies">Movies</button>
+            <button mat-menu-item routerLink="/cinemas">Cinemas</button>
+            <button mat-menu-item routerLink="/bookings">Bookings</button>
+            <ng-container *ngIf="!this.getUser()">
+                <button mat-menu-item routerLink="/login">Login</button>
+                <button mat-menu-item routerLink="/register">Register</button>
+            </ng-container>
+            <ng-container *ngIf="this.getUser()">
+                <button mat-menu-item routerLink="/watchlist">Watchlist</button>
+                <button mat-menu-item routerLink="/changePassword">Change Password</button>
+                <button mat-menu-item (click)="logout()">Logout</button>
+            </ng-container>
+          </mat-menu>
+        <div class="desktop-buttons">
+            <button mat-button routerLink="/movies">Movies</button>
+            <button mat-button routerLink="/cinemas">Cinemas</button>
+            <button mat-button routerLink="/bookings">Bookings</button>
+            <div class="right-elements">
+                <ng-container *ngIf="!this.getUser()">
+                    <button mat-button routerLink="/login">Login</button>
+                    <button mat-button routerLink="/register">Register</button>
+                </ng-container>
+                <ng-container *ngIf="this.getUser()">
+                    <button mat-button routerLink="/watchlist">Watchlist</button>
+                    <button mat-button routerLink="/changePassword">Change Password</button>
+                    <button mat-button (click)="logout()">Logout</button>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</mat-toolbar>
+  
